@@ -3,13 +3,21 @@ const clearError = () => {
   document.querySelector(".alert").remove();
 };
 
+// Hide results
+const hideResult = () => {
+  document.getElementById("results").style.display = "none";
+};
+
+// Hide image-loader
+const hideloader = () => {
+  document.getElementById("loading").style.display = "none";
+};
+
 // Show Error
 const showError = error => {
-  // Show results
-  document.getElementById("results").style.display = "none";
+  hideResult();
 
-  // Hide loader image
-  document.getElementById("loading").style.display = "none";
+  hideloader();
 
   // Create a div
   const errorDiv = document.createElement("div");
@@ -58,8 +66,7 @@ const calculateResults = () => {
     // Show results
     document.getElementById("results").style.display = "block";
 
-    // Hide loader image
-    document.getElementById("loading").style.display = "none";
+    hideloader();
   } else {
     showError("Please check your numbers");
   }
@@ -67,9 +74,7 @@ const calculateResults = () => {
 
 // Listen for submit
 document.getElementById("loan-form").addEventListener("submit", e => {
-  // Hide results
-  document.getElementById("results").style.display = "none";
-
+  hideResult();
   // Show loader
   document.getElementById("loading").style.display = "block";
 
